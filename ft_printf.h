@@ -10,12 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdio.h>
 # include "libft/libft.h"
 
+typedef struct s_flag
+{
+    char type;
+    int zero;
+    int minus;
+    int leftjust;
+    int width;
+    int precision;
+    char *content;
+}t_flag;
+
+char    *flaghandler(char *srcfrompercent);
 int ft_printf(const char *, ...);
 
 #endif

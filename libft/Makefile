@@ -44,16 +44,8 @@ SRC_OP2 = 	ft_substr.c  		\
 			ft_itoa.c			\
 			ft_strmapi.c		\
 			ft_split.c			\
-			ft_putendl_fd.c
-BONUS	=	ft_lstnew.c			\
-			ft_lstadd_front.c 	\
-			ft_lstsize.c	  	\
-			ft_lstlast.c	  	\
-			ft_lstadd_back.c	\
-			ft_lstdelone.c		\
-			ft_lstclear.c		\
-			ft_lstiter.c		\
-			ft_lstmap.c
+			ft_putendl_fd.c		\
+			ft_strpchr.c
 CFLAGS = -Wall -Wextra -Werror
 LIBNAME = libft.a
 
@@ -68,10 +60,6 @@ clean:
 
 fclean: clean
 	rm -f *.a
-bonus:
-	gcc -c $(CFLAGS) $(SRC_OP1) $(SRC_OP2) $(BONUS)
-	ar rc $(LIBNAME) *.o
-	ranlib $(LIBNAME)
 re: fclean all
 
 .PHONY: all clean fclean re bonus

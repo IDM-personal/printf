@@ -19,38 +19,43 @@ int ft_printf(const char *src, ...)
 	
 	va_start(args, src);
 	va_end(args);
-	if(ft_strchr(src, '%'))
+	while(*src != '\0')
 	{
-		printf("flag start\n");
-		int fgstart = ft_strpchr(src,'%');
-		printf("%i", fgstart);
-		char *cad = (char*)(src + fgstart + 1);
-		int nextfg = ft_strpchr(cad, '%');
-		if(nextfg == 0)
+		while(*src == '%')
 		{
-			nextfg = ft_strpchr(src,'\0');
+			//start flaghandler
+			if((src = flaghandler(ft_strdup(src))) == NULL)
+				return (0);
+			//printf("\nSRC NEXT TO FLAG CALL : %s\n",src);
 		}
-		printf("%i", nextfg);
-		printf("flagcontent -> %s\n", ft_substr(src,fgstart + 1,nextfg));
-		printf("%s",cad);
+		ft_putchar_fd(*src,1);
+		src++;
 	}
-	printf("%i",va_arg(args,int));
-	printf("%i",va_arg(args,int));
-	printf("%-i\n",va_arg(args,int));
-	char *x = va_arg(args,char *);
-	
-	ft_putstr_fd(x,0);
-	
-	printf("\n%-c",va_arg(args,int));
+	// if(ft_strchr(src, '%'))
+	// {
+	// 	printf("flag start\n");
+	// 	int fgstart = ft_strpchr(src,'%');
+	// 	printf("%i", fgstart);
+	// 	char *cad = (char*)(src + fgstart + 1);
+	// 	int nextfg = ft_strpchr(cad, '%');
+	// 	if(nextfg == 0)
+	// 	{
+	// 		nextfg = ft_strpchr(src,'\0');
+	// 	}
+	// 	printf("%i", nextfg);
+	// 	printf("flagcontent -> %s\n", ft_substr(src,fgstart + 1,nextfg));
+	// 	printf("%s",cad);
+	// }
 	return (0);
 }
 
 int main()
 {
-	int number = 10;
-	ft_printf("%caaaa%s%%%s",1,2,3,"holabuenas",'c');
-	printf("\n%caa-10d\n", number);
-	printf("%+-+13.1i \n", 232,2);
-    printf("%-#10x \n", number);
-    printf("%-20d \n", 20000);
+	//int number = 10;
+	ft_printf("esto deberia salir entero%caa\naa%s%%%s",1,2,3,"holabuenas",'c');
+	printf("%*.*d",10,5,35);
+	// printf("\n%caa-10d\n", number);
+	// //printf("%13.1i \n", 232,2);
+    // printf("%-#10x \n", number);
+    // printf("%-20d \n", 20000);
 }

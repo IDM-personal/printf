@@ -99,12 +99,12 @@ void cum(t_flag *flg)
 }
 
 void initstruct(t_flag *flag){
-	flag->type = '0';
+	flag->type = 0;
 	flag->zero = 0;
 	flag->leftjust = 0;
-	flag->width = 0;
-	flag->precision = 0;
-	flag->content = "\0";
+	flag->width = -1;
+	flag->precision = -1;
+	flag->content = (char*)(malloc(sizeof(char*)));
 }
 
 char    *flaghandler(char *srcfrompercent, va_list args)

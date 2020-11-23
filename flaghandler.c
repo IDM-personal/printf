@@ -6,7 +6,7 @@
 /*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2020/10/07 18:21:14 by idelgado         ###   ########.fr       */
+/*   Updated: 2020/11/23 19:02:21 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,15 @@ void cum(t_flag *flg)
     printf("\nWIDTH : %d\n", flg->width);
     printf("\nPRECISION : %d\n", flg->precision);
     printf("\nCONTENIDO : %s\n", flg->content);
+}
+
+void initstruct(t_flag *flag){
+	flag->type = '0';
+	flag->zero = 0;
+	flag->leftjust = 0;
+	flag->width = 0;
+	flag->precision = 0;
+	flag->content = "\0";
 }
 
 char    *flaghandler(char *srcfrompercent, va_list args)

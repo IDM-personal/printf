@@ -56,8 +56,8 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 i++;
             cadwp++;
         }
-        if(flg->width == 0)
-            flg->width = ft_atoi(ft_substr(ogcadwp,wstat,i));
+        if(flg->width == -1)
+		flg->width = ft_atoi(ft_substr(ogcadwp, wstat, i));
         wstat += i + 1;
         i = 0;
         while(*cadwp++ != 0)
@@ -72,7 +72,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 i++;
             cadwp++;
         }
-        if(flg->precision == 0)
+        if(flg->precision == -1)
             flg->precision = ft_atoi(ft_substr(ogcadwp,wstat,i + 1));
     }
 }
@@ -110,7 +110,8 @@ void initstruct(t_flag *flag){
 char    *flaghandler(char *srcfrompercent, va_list args)
 {
 	t_flag *flg = (t_flag*)(malloc(sizeof(t_flag)));
-    int stat = 0;
+    	initstruct(flg);
+	int stat = 0;
     char *src = ft_strdup(srcfrompercent);
     printf("\nPUNTEROS IWALES : %p\n", flg);
     while(*srcfrompercent++ != 0)

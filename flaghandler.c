@@ -14,35 +14,117 @@
 
 static char* flagValues = "cspdiuxX%";
 
-char	*flaghandler(char *srcfrompercent)
+void    flagmuncher(char type, va_list args)
 {
-    //printf("POSIBLES FLAG VALUES : %s", flagValues);
-    //printf("\nCALL A FLAGHANDLER\n");
-    //printf("\nCADENA EN FLAGHANDLER : %s\n",srcfrompercent);
-	t_flag flg;
+    char *cad;
+    int n;
+    if(type == '%')
+        ft_putchar_fd('%',1);
+    if(type == 's')
+    {
+        cad = va_arg(args, char*); 
+        ft_putstr_fd(cad,1);
+    }
+    n = va_arg(args, int);
+    if(type == 'c')
+        ft_putchar_fd(n,1);
+}
+
+void    findwp(char *cadwp, t_flag *flg, va_list args)
+{
+    int wstat = 0,pstat = 0, width = 0, prec = 0, i = 0;
+    char *ogcadwp = ft_strdup(cadwp);
+    printf("\nCADENA FIND WIDTH PREC %s\n",cadwp);
+    va_arg(args,char*);
+    if(*cadwp)
+    {
+        if(ft_strrchr(cadwp,'-'))
+        {
+            wstat++;
+            flg->leftjust = 1;
+            cadwp++;
+        }
+        while(*cadwp != '.')
+        {
+            if(*cadwp == '*')
+            {
+                if(i != 0)
+                    return ;
+                flg->width = va_arg(args, int);
+            }
+            if(*cadwp <= '9' && *cadwp >= '0')
+                i++;
+            cadwp++;
+        }
+        if(flg->width == 0)
+            flg->width = ft_atoi(ft_substr(ogcadwp,wstat,i));
+        wstat += i + 1;
+        i = 0;
+        while(*cadwp++ != 0)
+        {
+            if(*cadwp == '*')
+            {
+                if(i != 0)
+                    return ;
+                flg->precision = va_arg(args, int);
+            }
+            if(*cadwp <= '9' && *cadwp >= '0')
+                i++;
+            cadwp++;
+        }
+        if(flg->precision == 0)
+            flg->precision = ft_atoi(ft_substr(ogcadwp,wstat,i + 1));
+    }
+}
+
+void    flagmods(char *modscad, t_flag *flg, va_list args)
+{
+    if(ft_strrchr(modscad,'.'))
+    {
+        findwp(modscad, flg, args);
+    }else
+        while(*modscad)
+            if(ft_strrchr("0",*modscad++))
+                flg->zero = 1;
+}
+
+void cum(t_flag *flg)
+{
+    printf("\nTIPO : %c\n", flg->type);
+    printf("\nZERO : %d\n", flg->zero);
+    printf("\nLEFT JUST: %d\n", flg->leftjust);
+    printf("\nWIDTH : %d\n", flg->width);
+    printf("\nPRECISION : %d\n", flg->precision);
+    printf("\nCONTENIDO : %s\n", flg->content);
+}
+
+char    *flaghandler(char *srcfrompercent, va_list args)
+{
+	t_flag *flg = (t_flag*)(malloc(sizeof(t_flag)));
+    int stat = 0;
+    char *src = ft_strdup(srcfrompercent);
+    printf("\nPUNTEROS IWALES : %p\n", flg);
     while(*srcfrompercent++ != 0)
     {
         if(ft_strrchr(flagValues,*srcfrompercent) != 0)
         {
-            flg.type = *srcfrompercent++;
+            flg->type = *srcfrompercent++;
             break;
-        }
+        }else
+            stat++;
     }
-    flg.content = srcfrompercent;
-    flg.content =  ft_substr(flg.content,0 ,ft_strpchr(flg.content,'%'));
-    ft_putstr_fd(flg.content,1);
-    //printf("\nSRC THAT SHOULD GO BACK FLAGCALL : %s\n",srcfrompercent);
-    printf("\nFLAG : %c\n",flg.type);
-    //call flagmuncher
+    if(stat > 0)
+        flagmods(ft_substr(src,1,stat),flg,args);
+    flg->content = srcfrompercent;
+    flg->content =  ft_substr(flg->content,0 ,ft_strpchr(flg->content,'%'));
+    cum(flg);
+    flagmuncher(flg->type,args);
     while(*srcfrompercent != '\0')
     {
         if(*srcfrompercent == '%')
             return(srcfrompercent);
-        *srcfrompercent++;
+		ft_putchar_fd(*srcfrompercent,1);
+        srcfrompercent++;
     }
-    printf("\nHE FUCKED UP\n");
-    
-    //printf("\nNIGGA \n");
-    //printf("\nFLAG CONTENT : %s\n",flg.content);
     return (NULL);
 }

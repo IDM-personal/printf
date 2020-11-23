@@ -10,21 +10,56 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC_PRINTF = 	ft_printf.c \
-				flaghandler.c
-CFLAGS = -Wall -Wextra -Werror
+NAME = libftprintf.a
 
-all:
-	make -C ./libft
-	gcc -c $(CFLAGS) $(SRC_PRINTF) libft/libft.a
-	ar rc libftprintf.a *.o
-	ranlib libftprintf.a
-	rm -f *.o
+SRC_PF =    flaghandler.c
+
+PRINTF =    ft_printf.c
+
+OBJET_PRINTF = $(PRINTF:.c=.o)
+
+OBJET_LIB =  libft/*.o
+
+LIBFT_PATH = ./libft
+
+PUTAFLAGS = -Wall -Werror -Wextra
+
+GCC = gcc
+
+AR = ar
+
+ARFLAGS = rc
+
+MAKE = make
+
+.PHONY: clean fclean all re test g
+
+all: $(NAME)
+
+$(NAME):
+		@$(MAKE) -C $(LIBFT_PATH)
+		@echo Compiling $(NAME)
+		@$(GCC) $(FLAGS) -c $(SRC_PF) $(PRINTF)
+		@$(AR) $(ARFLAGS) $(NAME) *.o */*.o
+		@ranlib $(NAME)
+		@echo ======[Done]======
+
+%.o : %.c
+		@echo "$(NAME) >>> Add/Update $^"
 clean:
-	rm -f *.o
+		@$(MAKE) -C $(LIBFT_PATH) fclean
+		@echo Clean objects $(NAME)
+		@rm -rf $(OBJET_PF) $(OBJET_PRINTF)
 
 fclean: clean
-	rm -f *.a
-re: fclean all
+		@$(MAKE) -C $(LIBFT_PATH) fclean
+		@echo Clean $(NAME)
+		@rm -rf $(NAME)
+		@echo ======[Clean]======
 
-.PHONY: all clean fclean re bonus
+g:
+	git pull
+
+test: g re
+	gcc main.c libftprintf.a && ./a.out
+re: fclean all

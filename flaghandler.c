@@ -6,7 +6,7 @@
 /*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2020/11/30 23:37:12 by idelgado         ###   ########.fr       */
+/*   Updated: 2020/12/01 11:36:56 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 i++;
             cadwp++;
         }
-        if(flg->width == 0)
-            flg->width = ft_atoi(ft_substr(ogcadwp,wstat,i));
+        if(flg->width == -1)
+		flg->width = ft_atoi(ft_substr(ogcadwp, wstat, i));
         wstat += i + 1;
         i = 0;
         while(*cadwp++ != 0)
@@ -78,8 +78,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 i++;
             cadwp++;
         }
-        printf("\n VALUES WSTAT : %i I : %i\n",wstat,i);
-        if(flg->precision == 0)
+        if(flg->precision == -1)
             flg->precision = ft_atoi(ft_substr(ogcadwp,wstat,i + 1));
     }
 }
@@ -120,7 +119,8 @@ char    *flaghandler(char *srcfrompercent, va_list args)
     char* flagValues;
     flagValues = "cspdiuxX%";
 	t_flag *flg = (t_flag*)(malloc(sizeof(t_flag)));
-    int stat = 0;
+    	initstruct(flg);
+	int stat = 0;
     char *src = ft_strdup(srcfrompercent);
     while(*srcfrompercent++ != 0)
     {

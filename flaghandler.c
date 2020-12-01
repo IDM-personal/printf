@@ -6,13 +6,11 @@
 /*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2020/11/23 19:02:21 by idelgado         ###   ########.fr       */
+/*   Updated: 2020/11/30 23:37:12 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static char* flagValues = "cspdiuxX%";
 
 void    flagmuncher(char type, va_list args)
 {
@@ -20,22 +18,30 @@ void    flagmuncher(char type, va_list args)
     int n;
     if(type == '%')
         ft_putchar_fd('%',1);
-    if(type == 's')
+    /*if(type == 's')
     {
         cad = va_arg(args, char*); 
         ft_putstr_fd(cad,1);
-    }
+    }*/
     n = va_arg(args, int);
     if(type == 'c')
         ft_putchar_fd(n,1);
+    if(type == 'x')
+        ft_print_hex(n, 0);
+    if(type == 'X')
+        ft_print_hex(n,1);
+    if(type == 'p')
+    {
+        write(1, "0x", 2);
+        ft_print_hex(n,0);
+    }
+        
 }
 
 void    findwp(char *cadwp, t_flag *flg, va_list args)
 {
     int wstat = 0,pstat = 0, width = 0, prec = 0, i = 0;
     char *ogcadwp = ft_strdup(cadwp);
-    printf("\nCADENA FIND WIDTH PREC %s\n",cadwp);
-    va_arg(args,char*);
     if(*cadwp)
     {
         if(ft_strrchr(cadwp,'-'))
@@ -72,6 +78,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 i++;
             cadwp++;
         }
+        printf("\n VALUES WSTAT : %i I : %i\n",wstat,i);
         if(flg->precision == 0)
             flg->precision = ft_atoi(ft_substr(ogcadwp,wstat,i + 1));
     }
@@ -79,6 +86,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
 
 void    flagmods(char *modscad, t_flag *flg, va_list args)
 {
+    printf("SEG FAULT");
     if(ft_strrchr(modscad,'.'))
     {
         findwp(modscad, flg, args);
@@ -109,10 +117,11 @@ void initstruct(t_flag *flag){
 
 char    *flaghandler(char *srcfrompercent, va_list args)
 {
+    char* flagValues;
+    flagValues = "cspdiuxX%";
 	t_flag *flg = (t_flag*)(malloc(sizeof(t_flag)));
     int stat = 0;
     char *src = ft_strdup(srcfrompercent);
-    printf("\nPUNTEROS IWALES : %p\n", flg);
     while(*srcfrompercent++ != 0)
     {
         if(ft_strrchr(flagValues,*srcfrompercent) != 0)
@@ -127,7 +136,9 @@ char    *flaghandler(char *srcfrompercent, va_list args)
     flg->content = srcfrompercent;
     flg->content =  ft_substr(flg->content,0 ,ft_strpchr(flg->content,'%'));
     cum(flg);
+    printf("\nSEG FAULT precum \n");
     flagmuncher(flg->type,args);
+    cum(flg);
     while(*srcfrompercent != '\0')
     {
         if(*srcfrompercent == '%')

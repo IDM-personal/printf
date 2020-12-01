@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+         #
+#    By: idm <idm@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2020/10/07 18:27:44 by idelgado         ###   ########.fr        #
+#    Updated: 2020/11/30 11:01:36 by idm              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC_PF =    flaghandler.c
+SRC_PF =    flaghandler.c \
+			ft_itoa_hex.c
 
 PRINTF =    ft_printf.c
 

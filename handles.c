@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   handles.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/29 18:45:09 by idelgado          #+#    #+#             */
-/*   Updated: 2020/11/30 16:45:25 by idelgado         ###   ########.fr       */
+/*   Created: 2020/11/25 18:00:02 by idelgado          #+#    #+#             */
+/*   Updated: 2020/11/30 23:39:43 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-int ft_printf(const char *src, ...)
+int     handles(t_flag *flg, char *str)
 {
-	va_list args;
-	
-	va_start(args, src);
-	while(*src != '\0')
-	{
-		while(*src == '%')
-		{
-			//start flaghandler
-			if((src = flaghandler(ft_strdup(src),args)) == NULL)
-				return (0);
-		}
-		ft_putchar_fd(*src,1);
-		src++;
-	}
-	va_end(args);
-	return (0);
+    int cadlen;
+    char *toprint;
+    int i;
+
+    i = 0;
+    cadlen = ft_strlen(str);
+    //print 0
+    //print extra spaces first
+    //print extra spaces dp
+    if(flg->width != -1)
+    {
+        
+    }
+    return (cadlen);
 }

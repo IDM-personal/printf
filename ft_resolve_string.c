@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:33:00 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 19:55:11 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 20:05:32 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void ft_resolve_string(char *cad, t_flag *flg, int *flenght)
 {
     int ilength;
-    
+    int rtvalue;
+
+    rtvalue = 0;
     ilength = ft_strlen(cad);
     if(flg->width != -1 || flg->precision != -1)
     {
@@ -24,19 +26,21 @@ void ft_resolve_string(char *cad, t_flag *flg, int *flenght)
             if(flg->precision > ilength)
             {
                 if(flg->precision < ilength)
-                    *flenght += flg->precision;
+                    rtvalue = flg->precision;
                 else
-                    *flenght += ilength;
+                    rtvalue = ilength;
                 ft_putstr_fd(cad,1);
             }
             else
             {
-                *flenght += flg->precision;
+                rtvalue = flg->precision;
                 ft_putstr_n(cad,flg->precision);
             }
         }
         else
         {
+            if(ilength > flg->width)
+                rtvalue = ilength;
             if(flg->leftjust)
             {
                 ft_putstr_n(cad,flg->precision);
@@ -44,7 +48,7 @@ void ft_resolve_string(char *cad, t_flag *flg, int *flenght)
                     ft_putblanks(flg->width - flg->precision);
                 else if(flg->width > ilength)
                     ft_putblanks(flg->width - ilength);
-                *flenght += (flg->width);
+                rtvalue += (flg->width);
             }
             else
             {
@@ -53,15 +57,14 @@ void ft_resolve_string(char *cad, t_flag *flg, int *flenght)
                 else if(flg->width > ilength)
                     ft_putblanks(flg->width - ilength);
                 ft_putstr_n(cad,flg->precision);
-                *flenght += flg->width;
+                rtvalue = flg->width;
             }
-            if(ilength > flg->width)
-                *flenght = *flenght - flg->width + ilength;
         }
     }
     else
     {
-        *flenght += ilength;
+        rtvalue = ilength;
         ft_putstr_fd(cad, 1);
     }
+    *flenght += rtvalue;
 }

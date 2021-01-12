@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 21:30:10 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 21:34:41 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void cum(t_flag *flg)
     printf("\nLEFT JUST: %d\n", flg->leftjust);
     printf("\nWIDTH : %d\n", flg->width);
     printf("\nPRECISION : %d\n", flg->precision);
-    printf("\nISNULL : %d\n", flg->isnull);
 }
 
 void initstruct(t_flag *flag){
@@ -108,7 +107,6 @@ void initstruct(t_flag *flag){
 	flag->leftjust = 0;
 	flag->width = -1;
 	flag->precision = -1;
-    flag->isnull = 0;
 }
 
 char    *flaghandler(char *srcfrompercent, va_list args, int *len)

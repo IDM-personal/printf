@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_n.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/29 18:45:09 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 01:28:33 by idm              ###   ########.fr       */
+/*   Created: 2021/01/12 00:32:44 by idm               #+#    #+#             */
+/*   Updated: 2021/01/12 00:58:53 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-
-int ft_printf(const char *src, ...)
+void	ft_putstr_n(char *s, int max)
 {
-	va_list args;
-	int		length;
-	
-	length = 0;
-	va_start(args, src);
-	while(*src != '\0')
-	{
-		while(*src == '%')
+	int c;
+
+	c = 0;
+	if (s)
+		while (*s && c !=max)
 		{
-			//start flaghandler
-			if((src = flaghandler(ft_strdup(src),args,&length)) == NULL)
-				return (length);
+			write(1, &(*s++), 1);
+			c++;
 		}
-		ft_putchar_fd(*src,1);
-		length += 1;
-		src++;
-	}
-	va_end(args);
-	if(length == 0)
-		return (0);
-	else
-		return (length);
 }

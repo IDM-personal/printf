@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+         #
+#    By: idm <idm@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2020/08/13 10:44:18 by idelgado         ###   ########.fr        #
+#    Updated: 2021/01/12 02:35:29 by idm              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,13 +46,16 @@ SRC_OP2 = 	ft_substr.c  		\
 			ft_split.c			\
 			ft_putendl_fd.c		\
 			ft_strpchr.c
+SRC_EXTRA = ft_putstr_n.c		\
+			ft_putblanks.c		\
+			ft_putzeros.c
 CFLAGS = -Wall -Wextra -Werror
 LIBNAME = libft.a
 
 all: $(NAME)
 
 $(NAME):
-	gcc -c $(CFLAGS) $(SRC_OP1) $(SRC_OP2)
+	gcc -c $(CFLAGS) $(SRC_OP1) $(SRC_OP2) $(SRC_EXTRA)
 	ar rc $(LIBNAME) *.o
 	ranlib $(LIBNAME)
 clean:

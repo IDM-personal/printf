@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 18:48:58 by idelgado          #+#    #+#             */
-/*   Updated: 2020/10/07 17:47:35 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/12 02:43:51 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ typedef struct s_flag
     char *content;
 }t_flag;
 
-char    *flaghandler(char *srcfrompercent, va_list args);
-int ft_printf(const char *, ...);
+char    *flaghandler(char *srcfrompercent, va_list args, int *len);
+int     ft_printf(const char *, ...);
+char    *ft_itohex_t(int itohex, int caps);
+void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght);
+void    ft_resolve_string(char *cad, t_flag *flg, int *flenght);
+void    ft_resolve_pointer(char *cad, t_flag *flg, int *flenght);
+void    ft_resolve_hex(char *cad, t_flag *flg, int *flenght);
 
 #endif

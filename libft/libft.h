@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 12:47:22 by idelgado          #+#    #+#             */
-/*   Updated: 2020/10/07 18:33:42 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/12 02:35:18 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,8 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),\
 void (*del)(void *));
+
+void			ft_putstr_n(char *s, int max);
+void			ft_putblanks(int max);
+void			ft_putzeros(int max);
 #endif

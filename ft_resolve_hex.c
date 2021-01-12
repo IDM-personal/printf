@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 23:51:00 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 23:51:58 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
             {
                 if(flg->precision > ilength)
                     ft_putzeros(flg->precision - ilength);
-                if(flg->width != 0 && flg->precision != 0)
+                if(flg->width != 0 || flg->precision != 0)
                     ft_putstr_fd(cad, 1);
                 if(flg->precision != -1)
                 {
@@ -73,7 +73,7 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
                 }
                 else if(ilength < flg->width)
                     ft_putblanks(flg->width - ilength);
-                if(flg->width != 0 && flg->precision != 0)
+                if(flg->width != 0 || flg->precision != 0)
                     ft_putstr_fd(cad, 1);
             }
         }

@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 08:19:15 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 19:57:22 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
         cad = va_arg(args, char*);
         if(cad == NULL)
         {
-            write(1, 0, 1);
+            write(1, "(null)", 6);
+            *flenght += 6;
             return ;
         }
         ft_resolve_string(cad, flg, flenght);

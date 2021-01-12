@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 04:27:54 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 05:06:09 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static char* flagValues = "cspdiuxX%";
 
 void    findwp(char *cadwp, t_flag *flg, va_list args)
 {
-    int wstat = 0,pstat = 0, width = 0, prec = 0, i = 0;
-    char *ogcadwp = ft_strdup(cadwp);
+    int i = 0;
+    char *width = malloc(sizeof(char*));
+    char *precision = malloc(sizeof(char*));
     if(*cadwp)
     {
         if(ft_strrchr(cadwp,'-'))
         {
-            wstat++;
             flg->leftjust = 1;
             cadwp++;
         }
@@ -35,12 +35,11 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 flg->width = va_arg(args, int);
             }
             if(*cadwp <= '9' && *cadwp >= '0')
-                i++;
+                width[i++] = *cadwp;
             cadwp++;
         }
         if(flg->width == -1)
-            flg->width = ft_atoi(ft_substr(ogcadwp,wstat,i));
-        wstat += i + 1;
+            flg->width = ft_atoi(width);
         i = 0;
         while(*cadwp++ != 0)
         {
@@ -51,11 +50,11 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 flg->precision = va_arg(args, int);
             }
             if(*cadwp <= '9' && *cadwp >= '0')
-                i++;
+                precision[i++] = *cadwp;
             cadwp++;
         }
         if(flg->precision == -1)
-            flg->precision = ft_atoi(ft_substr(ogcadwp,wstat,i + 1));
+            flg->precision = ft_atoi(precision);
     }
 }
 
@@ -69,7 +68,9 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     if(ft_strrchr(modscad,'.'))
     {
         findwp(modscad, flg, args);
-    }else
+        return ;
+    }
+    else
         while(*modscad)
         {
             if(ft_strrchr("-",*modscad))
@@ -87,7 +88,6 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
             *modscad++;
         }
     flg->width = ft_atoi(width);
-    printf("%i",flg->width);
 }
 
 void cum(t_flag *flg)
@@ -124,10 +124,10 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
         }else
             stat++;
     }
-    printf("VALOR DE STAT : %i",stat);
+    //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    cum(flg);
+    //cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

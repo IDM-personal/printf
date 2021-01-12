@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:33:00 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 04:43:49 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 05:15:20 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void ft_resolve_string(char *cad, t_flag *flg, int *flenght)
         else
         {
             if(ilength > flg->width)
-                *flenght = ilength;
+                *flenght += ilength;
             if(flg->leftjust)
             {
                 ft_putstr_n(cad,flg->precision);

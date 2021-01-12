@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 05:08:19 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 05:19:10 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 width[i++] = *cadwp;
             cadwp++;
         }
-        if(flg->width == -1)
+        if(flg->width <= 0)
             flg->width = ft_atoi(width);
         i = 0;
-        while(*cadwp++ != 0)
+        while(*cadwp != 0)
         {
             if(*cadwp == '*')
             {
@@ -55,7 +55,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 precision[i++] = *cadwp;
             cadwp++;
         }
-        if(flg->precision == -1)
+        if(flg->precision <= 0)
             flg->precision = ft_atoi(precision);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 01:28:26 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 03:37:12 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
 
 void    flagmods(char *modscad, t_flag *flg, va_list args)
 {
+    printf("SEG FAULT");
     if(ft_strrchr(modscad,'.'))
     {
         findwp(modscad, flg, args);
@@ -89,6 +90,8 @@ void initstruct(t_flag *flag){
 
 char    *flaghandler(char *srcfrompercent, va_list args, int *len)
 {
+    char* flagValues;
+    flagValues = "cspdiuxX%";
 	t_flag *flg = (t_flag*)(malloc(sizeof(t_flag)));
     initstruct(flg);
     int stat = 0;

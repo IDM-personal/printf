@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 00:22:14 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 00:25:27 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
     int ilength;
 
     ilength = ft_strlen(cad);
-    *flenght += 2;
     if(flg->width != -1 || flg->precision != -1)
     {
         if(flg->precision > flg->width)

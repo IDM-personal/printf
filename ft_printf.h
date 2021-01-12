@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 18:48:58 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 02:43:51 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 21:29:27 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_flag
     int width;
     int precision;
     char *content;
+    int isnull;
 }t_flag;
 
 char    *flaghandler(char *srcfrompercent, va_list args, int *len);

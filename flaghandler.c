@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 05:06:09 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 05:08:19 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
     int i = 0;
     char *width = malloc(sizeof(char*));
     char *precision = malloc(sizeof(char*));
+    flg->width = 0;
+    flg->precision = 0;
     if(*cadwp)
     {
         if(ft_strrchr(cadwp,'-'))

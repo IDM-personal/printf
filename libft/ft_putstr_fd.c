@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 13:16:13 by idelgado          #+#    #+#             */
-/*   Updated: 2020/08/10 13:21:16 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/12 21:15:52 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,6 @@ void	ft_putstr_fd(char *s, int fd)
 	if (s)
 		while (*s)
 			write(fd, &(*s++), 1);
+	else
+		ft_putstr_fd("(null)",1);
 }

@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 03:06:03 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 03:47:24 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
     int ilength;
 
     ilength = ft_strlen(cad);
-    if(flg->precision != -1)
+    if(flg->precision != -1 && flg->precision != -1)
     {
         if(flg->precision > flg->width)
         {

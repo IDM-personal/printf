@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 03:37:12 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 04:13:23 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,28 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
 
 void    flagmods(char *modscad, t_flag *flg, va_list args)
 {
-    printf("SEG FAULT");
+    char *width;
+    int i;
+
+    i = 0;
+    width = malloc(sizeof(char*));
     if(ft_strrchr(modscad,'.'))
     {
         findwp(modscad, flg, args);
     }else
         while(*modscad)
-            if(ft_strrchr("0",*modscad++))
+        {
+            if(ft_strrchr("0",*modscad))
+            {
                 flg->zero = 1;
+            }else
+            {
+                width[i++] = *modscad;
+            }
+            *modscad++;
+        }
+    flg->width = ft_atoi(width);
+    printf("%i",flg->width);
 }
 
 void cum(t_flag *flg)
@@ -105,8 +119,10 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
         }else
             stat++;
     }
+    printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
+    cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

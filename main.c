@@ -8,6 +8,8 @@ int		main()
 
 	val = 0;
 	//printf("LAST LENGTH = %i \n",ft_printf("%s","10"));
-	val = ft_printf("%-3.s", NULL);
+	val = ft_printf("%2s", NULL);
+	printf("MYVAL %i\n",val);
+	val = printf("%2s", NULL);
 	printf("MYVAL %i\n",val);
 }

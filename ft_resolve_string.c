@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:33:00 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 22:34:08 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/12 22:35:15 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ void ft_resolve_string(char *cad, t_flag *flg, int *flenght)
                 else if(ilength > flg->width)
                     rtvalue = ilength;
                 else
+                {
                     rtvalue = flg->width;
+                    ft_putblanks(flg->width);
+                }
+                    
                 ft_putstr_fd(cad,1);
             }
             else

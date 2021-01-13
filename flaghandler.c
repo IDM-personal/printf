@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 10:48:50 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 10:50:28 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
             if(*cadwp == '.')
                 break ;
             if(*cadwp == '*')
-                findwp(ft_strjoin(cadwp,ft_itoa(va_arg(args, int))),flg,args);
+            {
+                if(i != 0)
+                    return ;
+                flg->width = va_arg(args, int);
+            }
             if(*cadwp <= '9' && *cadwp >= '0')
                 width[i++] = *cadwp;
             cadwp++;

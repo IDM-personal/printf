@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 06:29:35 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 06:33:30 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
     {
         ft_putstr_fd("0x",1);
         ft_putstr_fd(cad, 1);
-        *flenght += ilength + 2;
+        *flenght += ilength;
     }
 }

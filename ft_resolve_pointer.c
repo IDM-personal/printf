@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 07:14:41 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:15:40 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
                 }
                 else
                 {
-                    if(flg->precision == -1 || flg->precision < ilength)
+                    if(flg->precision == 0 || flg->precision < ilength)
                         ft_putblanks(flg->width - ilength + 1);
                     else
                         ft_putblanks(flg->width - flg->precision - ilength);

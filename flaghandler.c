@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 21:40:03 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 21:52:58 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
     flg->precision = 0;
     if(*cadwp)
     {
-        if(*cadwp == '-')
-        {
-            flg->leftjust = 1;
-            cadwp++;
-        }
         while(*cadwp != '.')
         {
             if(*cadwp == '-')
-                cadwp++;
+            {
+                flg->leftjust = 1;
+                findwp(ft_substr(cadwp, 1,ft_strlen(cadwp)),flg, args);
+            }
             if(*cadwp == '*')
             {
                 if(i != 0)
                     return ;
                 flg->width = va_arg(args, int);
             }
-            if(*cadwp <= '9' && *cadwp >= '0')
+            if (ft_strpchr(cadwp, '0') == 0)
+                flg->zero = 1;
+            else if(*cadwp <= '9' && *cadwp >= '0')
                 width[i++] = *cadwp;
             cadwp++;
         }
@@ -75,7 +75,17 @@ void    findwidth(char *cad, t_flag *flg)
     i = 0;
     width = malloc(sizeof(char*));
     while(*cad)
+    {
+        //printf("%c\n", *cad);
+        if(*cad == '-')
+            {
+                flg->leftjust = 1;
+                findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
+                return ;
+            }
         width[i++] = *cad++;
+    }
+        
     flg->width = ft_atoi(width);
 }
 
@@ -89,9 +99,10 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     else
         while(*modscad)
         {
-            printf("ww");
+            printf("CAD MODS : %s",modscad);
             if(*modscad == '-')
             {
+                flg->leftjust = 1;
                 flagmods(ft_substr(modscad, 1,ft_strlen(modscad)),flg,args);
                 return ;
             }

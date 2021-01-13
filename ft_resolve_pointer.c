@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 07:06:41 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:08:44 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
     ilength = ft_strlen(cad) + 2;
     if(flg->precision != -1 || flg->width != 1)
     {
-        if(flg->precision >= flg->width)
+        if(flg->precision > flg->width)
         {
             ft_putstr_fd("0x",1);
             if(flg->precision > ilength)
@@ -66,8 +66,8 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
             else
             {
                 ft_putstr_fd("0x",1);
-                ft_putstr_fd(cad,1);
-                *flenght += ilength;
+                ft_putstr_n(cad, flg->precision);
+                *flenght += ilength - flg->precision;
             }
         }
     }

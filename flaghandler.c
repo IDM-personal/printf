@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 09:42:10 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 09:53:22 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 if(i != 0)
                     return ;
                 flg->precision = va_arg(args, int);
+                if(flg->precision < 1)
+                    flg->precision = -1;
+                return ;
             }
             if(*cadwp <= '9' && *cadwp >= '0')
                 precision[i++] = *cadwp;

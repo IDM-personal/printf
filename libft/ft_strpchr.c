@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strpchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 10:38:08 by idelgado          #+#    #+#             */
-/*   Updated: 2020/10/07 19:12:41 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/13 21:39:27 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int		ft_strpchr(const char *str, int c)
 {
@@ -27,5 +29,5 @@ int		ft_strpchr(const char *str, int c)
 	}
 	if (cstr[i] == ch)
 		return (i);
-	return (0);
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 21:16:27 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 21:40:03 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     else
         while(*modscad)
         {
+            printf("ww");
             if(*modscad == '-')
             {
                 flagmods(ft_substr(modscad, 1,ft_strlen(modscad)),flg,args);

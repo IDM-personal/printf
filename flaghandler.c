@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 10:50:28 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 10:51:47 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
             flg->leftjust = 1;
             cadwp++;
         }
-        while(*cadwp != 0)
+        while(*cadwp != '.')
         {
-            if(*cadwp == '.')
-                break ;
             if(*cadwp == '*')
             {
                 if(i != 0)
@@ -52,6 +50,9 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 if(i != 0)
                     return ;
                 flg->precision = va_arg(args, int);
+                if(flg->precision < 1)
+                    flg->precision = -1;
+                return ;
             }
             if(*cadwp <= '9' && *cadwp >= '0')
                 precision[i++] = *cadwp;
@@ -70,22 +71,26 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     i = 0;
     width = malloc(sizeof(char*));
     if(ft_strrchr(modscad,'.'))
+    {
         findwp(modscad, flg, args);
+        return ;
+    }
     else
         while(*modscad)
         {
+            printf("h");
+            if(*modscad == '*')
+            {
+                flg->width = va_arg(args, int);
+                return ;
+            }
             if(ft_strrchr("-",*modscad))
             {
                 flg->leftjust = 1;
-                *modscad++;
+                modscad++;
             }
             if(ft_strrchr("0",*modscad))
                 flg->zero = 1;
-            if(*modscad == '*')
-            {
-                flagmods(ft_itoa(va_arg(args, int)),flg , args);
-                return ;
-            }
             else
                 width[i++] = *modscad;
             *modscad++;

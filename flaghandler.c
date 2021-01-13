@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 10:15:42 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 10:48:50 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
             flg->leftjust = 1;
             cadwp++;
         }
-        while(*cadwp != '.')
+        while(*cadwp != 0)
         {
+            if(*cadwp == '.')
+                break ;
             if(*cadwp == '*')
-            {
-                if(i != 0)
-                    return ;
-                flg->width = va_arg(args, int);
-            }
+                findwp(ft_strjoin(cadwp,ft_itoa(va_arg(args, int))),flg,args);
             if(*cadwp <= '9' && *cadwp >= '0')
                 width[i++] = *cadwp;
             cadwp++;
@@ -68,10 +66,7 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     i = 0;
     width = malloc(sizeof(char*));
     if(ft_strrchr(modscad,'.'))
-    {
         findwp(modscad, flg, args);
-        return ;
-    }
     else
         while(*modscad)
         {
@@ -84,7 +79,7 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
                 flg->zero = 1;
             if(*modscad == '*')
             {
-                flg->width = va_arg(args, int);
+                flagmods(ft_itoa(va_arg(args, int)),flg , args);
                 return ;
             }
             else
@@ -131,7 +126,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    cum(flg);
+    //cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

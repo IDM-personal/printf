@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 07:00:32 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:03:22 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
             ft_putstr_fd("0x",1);
             if(flg->precision > ilength)
             {
-                *flenght += flg->precision;
+                *flenght += flg->precision + flg->width;
                 ft_putzeros(flg->precision - ilength + flg->width);
             }
             else
@@ -59,7 +59,7 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
                     if(flg->precision > ilength)
                         ft_putzeros(flg->precision - ilength);
                     else
-                        ft_putstr_n(cad, flg->width);
+                        ft_putstr_n(cad, flg->precision);
                 }
                 *flenght += flg->width;
             }
@@ -74,7 +74,8 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
     else
     {
         ft_putstr_fd("0x",1);
-        ft_putstr_fd(cad, 1);
+        if(flg->width != 0 && flg->precision !=0)
+            ft_putstr_fd(cad, 1);
         *flenght += ilength;
     }
 }

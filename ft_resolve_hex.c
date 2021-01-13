@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 22:07:17 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 22:10:13 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
                     else if(flg->width > ilength)
                         ft_putblanks(flg->width - ilength, flenght);
                 }
+                else if(flg->zero == 1)
+                    ft_putzeros(flg->width - ilength, flenght);
                 else if(ilength < flg->width)
                     ft_putblanks(flg->width - ilength, flenght);
                 if(flg->width != 0 && flg->precision != 0)

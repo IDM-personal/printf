@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 09:36:13 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 09:39:39 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     else
         while(*modscad)
         {
-            if(*modscad == "*")
+            if(*modscad == '*')
             {
-                flg->width == va_arg(args, int);
+                flg->width = va_arg(args, int);
                 return ;
             }
             if(ft_strrchr("-",*modscad))
@@ -134,7 +134,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    //cum(flg);
+    cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

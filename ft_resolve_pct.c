@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 05:20:26 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 05:35:41 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 05:37:02 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_resolve_pct(char pct, t_flag *flg, int *flenght)
 {
-    if(flg->width)
+    if(flg->width != -1)
     {
         if(flg->leftjust)
         {

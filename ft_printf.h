@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 18:48:58 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 22:08:06 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 01:14:49 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_flag
     int width;
     int precision;
     char *content;
-    int isnull;
 }t_flag;
 
 char    *flaghandler(char *srcfrompercent, va_list args, int *len);
@@ -34,5 +33,6 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght);
 void    ft_resolve_string(char *cad, t_flag *flg, int *flenght);
 void    ft_resolve_pointer(char *cad, t_flag *flg, int *flenght);
 void    ft_resolve_hex(char *cad, t_flag *flg, int *flenght);
+void    ft_resolve_char(int n, t_flag *flg, int *flenght);
 
 #endif

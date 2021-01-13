@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resolve_hex.c                                   :+:      :+:    :+:   */
+/*   ft_resolve_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 00:18:20 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 01:18:27 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
+void    ft_resolve_char(int n, t_flag *flg, int *flenght)
 {
     int ilength;
 
-    ilength = ft_strlen(cad);
+    ilength = 1;
     if(flg->width != -1 || flg->precision != -1)
     {
         if(flg->precision > flg->width)
@@ -28,12 +28,12 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
                 else
                     *flenght += ilength;
                 ft_putzeros(flg->precision - ilength);
-                ft_putstr_fd(cad,1);
+                ft_putchar_fd(n, 1);
             }
             else
             {
                 *flenght += ilength;
-                ft_putstr_fd(cad,1);
+                ft_putchar_fd(n, 1);
             }
         }else
         {
@@ -46,7 +46,7 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
                 if(flg->precision > ilength)
                     ft_putzeros(flg->precision - ilength);
                 if(flg->width != 0 && flg->precision != 0)
-                    ft_putstr_fd(cad, 1);
+                    ft_putchar_fd(n, 1);
                 if(flg->precision != -1)
                 {
                     if(flg->precision > ilength || flg->precision == 0)
@@ -76,13 +76,13 @@ void ft_resolve_hex(char *cad, t_flag *flg, int *flenght)
                 else if(ilength < flg->width)
                     ft_putblanks(flg->width - ilength);
                 if(flg->width != 0 && flg->precision != 0)
-                    ft_putstr_fd(cad, 1);
+                    ft_putchar_fd(n, 1);
             }
         }
     }
     else
     {
         *flenght += ilength;
-        ft_putstr_fd(cad, 1);
+        ft_putchar_fd(n, 1);
     }
 }

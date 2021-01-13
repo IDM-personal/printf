@@ -6,7 +6,7 @@
 #    By: idm <idm@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2021/01/13 01:20:08 by idm              ###   ########.fr        #
+#    Updated: 2021/01/13 07:52:04 by idm              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC_PF =    flaghandler.c\
 			ft_resolve_hex.c\
 			ft_resolve_pointer.c\
 			ft_resolve_string.c\
-			ft_resolve_char.c
+			ft_resolve_char.c\
+			ft_resolve_pct.c
 
 PRINTF =    ft_printf.c
 

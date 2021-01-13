@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 10:13:33 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 10:15:42 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 if(i != 0)
                     return ;
                 flg->precision = va_arg(args, int);
-                if(flg->precision < 1)
-                    flg->precision = -1;
-                return ;
             }
             if(*cadwp <= '9' && *cadwp >= '0')
                 precision[i++] = *cadwp;
@@ -134,7 +131,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    //cum(flg);
+    cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 05:30:52 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 06:16:46 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
     else if(type == 'p')
     {
         cad = va_arg(args, char*);
-        cad = ft_strjoin("0x", ft_itohex_t((void *)cad,0));
         ft_resolve_pointer(cad, flg, flenght);
     }
     else

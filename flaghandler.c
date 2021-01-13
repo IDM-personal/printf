@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 10:53:15 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 20:46:15 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
     flg->precision = 0;
     if(*cadwp)
     {
-        if(ft_strrchr(cadwp,'-'))
+        if(*cadwp == '-')
         {
             flg->leftjust = 1;
             cadwp++;
         }
         while(*cadwp != '.')
         {
+            if(*cadwp == '-')
+                cadwp++;
             if(*cadwp == '*')
             {
                 if(i != 0)
@@ -45,6 +47,8 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
         i = 0;
         while(*cadwp != 0)
         {
+            if(*cadwp == '-')
+                cadwp++;
             if(*cadwp == '*')
             {
                 if(i != 0)
@@ -65,6 +69,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
 
 void    flagmods(char *modscad, t_flag *flg, va_list args)
 {
+    printf("CADENA : %s ", modscad);
     char *width;
     int i;
 
@@ -78,22 +83,24 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
     else
         while(*modscad)
         {
+            if(*modscad == '-')
+            {
+                flg->leftjust = 1;
+                flagmods(ft_substr(modscad, 1,ft_strlen(modscad)),flg,args);
+                return ;
+            }
             if(*modscad == '*')
             {
                 flg->width = va_arg(args, int);
                 return ;
             }
-            if(ft_strrchr("-",*modscad))
-            {
-                flg->leftjust = 1;
-                modscad++;
-            }
-            if(ft_strrchr("0",*modscad))
+            if(ft_strpchr("0",*modscad))
                 flg->zero = 1;
             else
                 width[i++] = *modscad;
             *modscad++;
         }
+    printf("WIDTH : %s",width);
     flg->width = ft_atoi(width);
 }
 

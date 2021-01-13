@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 01:18:27 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:32:53 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,66 +23,52 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght)
         {
             if(flg->precision >= ilength)
             {
-                if(flg->precision > ilength)
-                    *flenght += flg->precision;
-                else
-                    *flenght += ilength;
-                ft_putzeros(flg->precision - ilength);
-                ft_putchar_fd(n, 1);
+                ft_putzeros(flg->precision - ilength, flenght);
+                ft_putchar(n, flenght);
             }
             else
-            {
-                *flenght += ilength;
-                ft_putchar_fd(n, 1);
-            }
+                ft_putchar(n, flenght);
         }else
         {
-            if(ilength > flg->width && flg->width != 0)
-                *flenght += ilength;
-            else
-                *flenght += flg->width;
             if(flg->leftjust)
             {
                 if(flg->precision > ilength)
-                    ft_putzeros(flg->precision - ilength);
+                    ft_putzeros(flg->precision - ilength, flenght);
                 if(flg->width != 0 && flg->precision != 0)
-                    ft_putchar_fd(n, 1);
+                    ft_putchar(n, flenght);
                 if(flg->precision != -1)
                 {
                     if(flg->precision > ilength || flg->precision == 0)
-                        ft_putblanks(flg->width - flg->precision);
+                        ft_putblanks(flg->width - flg->precision, flenght);
                     else if(flg->width > ilength)
-                        ft_putblanks(flg->width - ilength);
+                        ft_putblanks(flg->width - ilength, flenght);
                 }
                 else if(ilength < flg->width)
-                    ft_putblanks(flg->width - ilength);
+                    ft_putblanks(flg->width - ilength, flenght);
             }
             else
             {
                 if(flg->zero && flg->width > ilength)
-                    ft_putzeros(flg->width - ilength);
+                    ft_putzeros(flg->width - ilength, flenght);
                 else if(flg->precision != -1)
                 {
                     if(flg->precision == 0)
-                        ft_putblanks(flg->width - flg->precision);
+                        ft_putblanks(flg->width - flg->precision, flenght);
                     else if(flg->precision > ilength)
                     {
-                        ft_putblanks(flg->width - flg->precision);
-                        ft_putzeros(flg->precision - ilength);
+                        ft_putblanks(flg->width - flg->precision, flenght);
+                        ft_putzeros(flg->precision - ilength, flenght);
                     }
                     else if(flg->width > ilength)
-                        ft_putblanks(flg->width - ilength);
+                        ft_putblanks(flg->width - ilength, flenght);
                 }
                 else if(ilength < flg->width)
-                    ft_putblanks(flg->width - ilength);
+                    ft_putblanks(flg->width - ilength, flenght);
                 if(flg->width != 0 && flg->precision != 0)
-                    ft_putchar_fd(n, 1);
+                    ft_putchar(n, flenght);
             }
         }
     }
     else
-    {
-        *flenght += ilength;
-        ft_putchar_fd(n, 1);
-    }
+        ft_putchar(n, flenght);
 }

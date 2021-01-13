@@ -6,7 +6,7 @@
 #    By: idm <idm@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2021/01/12 02:35:29 by idm              ###   ########.fr        #
+#    Updated: 2021/01/13 07:36:20 by idm              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,6 @@ SRC_OP1 = 	ft_atoi.c  	 		\
 SRC_OP2 = 	ft_substr.c  		\
 			ft_strjoin.c 		\
 			ft_strtrim.c 		\
-			ft_putchar_fd.c 	\
-			ft_putstr_fd.c 		\
 			ft_putnbr_fd.c		\
 			ft_itoa.c			\
 			ft_strmapi.c		\
@@ -48,7 +46,9 @@ SRC_OP2 = 	ft_substr.c  		\
 			ft_strpchr.c
 SRC_EXTRA = ft_putstr_n.c		\
 			ft_putblanks.c		\
-			ft_putzeros.c
+			ft_putzeros.c		\
+			ft_putstr.c 		\
+			ft_putchar.c
 CFLAGS = -Wall -Wextra -Werror
 LIBNAME = libft.a
 

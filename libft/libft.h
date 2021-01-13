@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 12:47:22 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 02:35:18 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:36:08 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
@@ -72,7 +70,9 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),\
 void (*del)(void *));
 
-void			ft_putstr_n(char *s, int max);
-void			ft_putblanks(int max);
-void			ft_putzeros(int max);
+void			ft_putstr(char *s, int *len);
+void			ft_putchar(char c, int *len);
+void			ft_putstr_n(char *s, int max, int *len);
+void			ft_putblanks(int max, int *len);
+void			ft_putzeros(int max, int *len);
 #endif

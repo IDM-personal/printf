@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 18:45:09 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 05:21:29 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:35:05 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int ft_printf(const char *src, ...)
 			if((src = flaghandler(ft_strdup(src),args,&length)) == NULL)
 				return (length);
 		}
-		ft_putchar_fd(*src,1);
-		length += 1;
+		ft_putchar(*src, &length);
 		src++;
 	}
 	va_end(args);

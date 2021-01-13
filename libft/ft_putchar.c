@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 13:10:58 by idelgado          #+#    #+#             */
-/*   Updated: 2020/08/10 13:15:18 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/13 07:23:36 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar(char c, int *len)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
+	*len += 1;
 }

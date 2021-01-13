@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 06:55:44 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:32:19 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     {
         if(*srcfrompercent == '%')
             return(srcfrompercent);
-        *len += 1;
-		ft_putchar_fd(*srcfrompercent,1);
+		ft_putchar(*srcfrompercent, len);
         srcfrompercent++;
     }
     return (NULL);

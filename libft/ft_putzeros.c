@@ -6,13 +6,13 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:32:44 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 02:35:05 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:23:27 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putzeros(int max)
+void	ft_putzeros(int max, int *len)
 {
 	int c;
 
@@ -21,5 +21,6 @@ void	ft_putzeros(int max)
 	{
 		write(1, "0", 1);
 		c++;
+		*len += 1;
 	}
 }

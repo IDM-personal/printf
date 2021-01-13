@@ -6,13 +6,13 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:32:44 by idm               #+#    #+#             */
-/*   Updated: 2021/01/12 00:59:15 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/13 07:23:47 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putblanks(int max)
+void	ft_putblanks(int max, int *len)
 {
 	int c;
 
@@ -21,5 +21,6 @@ void	ft_putblanks(int max)
 	{
 		write(1, " ", 1);
 		c++;
+		*len += 1;
 	}
 }

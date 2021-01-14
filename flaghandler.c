@@ -6,7 +6,7 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/14 01:20:04 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/14 01:21:31 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,28 @@ void    findprec(char *cad, t_flag *flg)
         prec[i++] = *cad++;
     }
     flg->precision = ft_atoi(prec);
+}
+
+void    findwidth(char *cad, t_flag *flg)
+{
+    char *width;
+    int i;
+
+    //printf("CADENA : %s",cad);
+    i = 0;
+    width = malloc(sizeof(char*));
+    while(*cad)
+    {
+        //printf("%c\n", *cad);
+        if(*cad == '-')
+            {
+                flg->leftjust = 1;
+                findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
+                return ;
+            }
+        width[i++] = *cad++;
+    }
+    flg->width = ft_atoi(width);
 }
 
 void    findwp(char *cadwp, t_flag *flg, va_list args)
@@ -89,28 +111,6 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
         if(flg->precision <= 0)
             flg->precision = ft_atoi(precision);
     }
-}
-
-void    findwidth(char *cad, t_flag *flg)
-{
-    char *width;
-    int i;
-
-    //printf("CADENA : %s",cad);
-    i = 0;
-    width = malloc(sizeof(char*));
-    while(*cad)
-    {
-        //printf("%c\n", *cad);
-        if(*cad == '-')
-            {
-                flg->leftjust = 1;
-                findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
-                return ;
-            }
-        width[i++] = *cad++;
-    }
-    flg->width = ft_atoi(width);
 }
 
 void    flagmods(char *modscad, t_flag *flg, va_list args)

@@ -6,13 +6,34 @@
 /*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/14 00:58:39 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/14 01:20:04 by idm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static char* flagValues = "cspdiuxX%";
+
+void    findprec(char *cad, t_flag *flg)
+{
+    char *prec;
+    int i;
+
+    //printf("CADENA PREC : %s",cad);
+    i = 0;
+    prec = malloc(sizeof(char*));
+    while(*cad)
+    {
+        //printf("%c\n", *cad);
+        if(*cad == '-')
+        {
+            findprec(ft_substr(cad, 1,ft_strlen(cad)),flg);
+            return ;
+        }
+        prec[i++] = *cad++;
+    }
+    flg->precision = ft_atoi(prec);
+}
 
 void    findwp(char *cadwp, t_flag *flg, va_list args)
 {
@@ -36,19 +57,23 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                     return ;
                 flg->width = va_arg(args, int);
             }
-            if (ft_strpchr(cadwp, '0') == 0)
+            if(ft_strpchr("modscad", '0') == 0)
                 flg->zero = 1;
-            else if(*cadwp <= '9' && *cadwp >= '0')
-                width[i++] = *cadwp;
-            cadwp++;
+            else 
+            {
+                findwidth(cadwp, flg);
+                cadwp = ft_substr(cadwp,  ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
+                //printf("hola %s\n", cadwp);
+            }
         }
         if(flg->width <= 0)
             flg->width = ft_atoi(width);
         i = 0;
         while(*cadwp != 0)
         {
+            *cadwp++;
             if(*cadwp == '-')
-                cadwp++;
+                findwp(ft_substr(cadwp, 1,ft_strlen(cadwp)),flg, args);
             if(*cadwp == '*')
             {
                 if(i != 0)
@@ -58,9 +83,8 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                     flg->precision = -1;
                 return ;
             }
-            if(*cadwp <= '9' && *cadwp >= '0')
-                precision[i++] = *cadwp;
-            cadwp++;
+            findprec(cadwp, flg);
+            return ;
         }
         if(flg->precision <= 0)
             flg->precision = ft_atoi(precision);
@@ -72,6 +96,7 @@ void    findwidth(char *cad, t_flag *flg)
     char *width;
     int i;
 
+    //printf("CADENA : %s",cad);
     i = 0;
     width = malloc(sizeof(char*));
     while(*cad)
@@ -85,7 +110,6 @@ void    findwidth(char *cad, t_flag *flg)
             }
         width[i++] = *cad++;
     }
-        
     flg->width = ft_atoi(width);
 }
 
@@ -111,7 +135,7 @@ void    flagmods(char *modscad, t_flag *flg, va_list args)
                 flg->width = va_arg(args, int);
                 return ;
             }
-            if(ft_strpchr(modscad, '0') == 0)
+            if(ft_strpchr("modscad", '0') == 0)
                 flg->zero = 1;
             else 
             {

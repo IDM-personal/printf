@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   length_formal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 06:55:11 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/19 19:06:02 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
         cad = ft_itohex_t(n,0);
         ft_resolve_pointer(cad, flg, flenght);
     }
+    if(type == 'i')
+        ft_resolve_i(ft_itoa(n), flg, flenght);
 }

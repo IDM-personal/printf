@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/19 19:34:55 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 19:46:06 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
                     ft_putchar('-',flenght);
                 ft_putstr(cad, flenght);
             }
-        }else
+        }
+        else
         {
             if(flg->leftjust)
             {
@@ -67,7 +68,7 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
             }
             else
             {
-                //printf("%i <> %i <> %i <> %i \n", flg->zero, flg->width, flg->precision, ilength);
+                printf("%i <> %i <> %i <> %i <> %i\n", flg->zero, flg->width, flg->precision, ilength, neg);
                 if(flg->zero && flg->width > ilength && flg->precision > ilength)
                     ft_putzeros(flg->width - ilength, flenght);
                 else if(flg->precision != -1)
@@ -91,11 +92,7 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
                 else if(flg->zero == 1 && ilength < flg->width)
                     ft_putzeros(flg->width - ilength, flenght);
                 else if(ilength < flg->width)
-                {
-                    if(neg)
-                        ft_putchar('-',flenght);
                     ft_putblanks(flg->width - ilength, flenght);
-                }
                 if(flg->width != 0 && flg->precision != 0)
                 {
                     if(neg)

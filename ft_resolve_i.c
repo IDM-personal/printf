@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/19 19:49:30 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 19:52:06 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
 
     cad = ft_itoa(i);
     neg = 0;
+    ilength = ft_strlen(cad);
     if(i < 0)
     {
         cad = ft_itoa(i * -1);
         neg = 1;
     }
-    ilength = ft_strlen(cad);
     if(flg->width != -1 || flg->precision != -1)
     {
         if(flg->precision > flg->width)

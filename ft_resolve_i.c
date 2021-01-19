@@ -6,16 +6,25 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/19 19:06:09 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 19:23:25 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_resolve_i(char *cad, t_flag *flg, int *flenght)
+void ft_resolve_i(int i, t_flag *flg, int *flenght)
 {
     int ilength;
+    int neg;
+    char *cad;
 
+    cad = ft_itoa(i);
+    neg = 0;
+    if(i < 0)
+    {
+        cad = ft_itoa(i * -1);
+        neg = 1;
+    }
     ilength = ft_strlen(cad);
     if(flg->width != -1 || flg->precision != -1)
     {
@@ -23,6 +32,8 @@ void ft_resolve_i(char *cad, t_flag *flg, int *flenght)
         {
             if(flg->precision >= ilength)
             {
+                if(neg)
+                    ft_putchar("-",flenght);
                 ft_putzeros(flg->precision - ilength, flenght);
                 ft_putstr(cad, flenght);
             }
@@ -33,7 +44,11 @@ void ft_resolve_i(char *cad, t_flag *flg, int *flenght)
             if(flg->leftjust)
             {
                 if(flg->precision > ilength)
+                {
+                    if(neg)
+                        ft_putchar("-",flenght);
                     ft_putzeros(flg->precision - ilength, flenght);
+                }
                 if(flg->width != 0 && flg->precision != 0)
                     ft_putstr(cad, flenght);
                 if(flg->precision != -1)
@@ -58,15 +73,25 @@ void ft_resolve_i(char *cad, t_flag *flg, int *flenght)
                     else if(flg->precision > ilength)
                     {
                         ft_putblanks(flg->width - flg->precision, flenght);
+                        if(neg)
+                            ft_putchar("-",flenght);
                         ft_putzeros(flg->precision - ilength, flenght);
                     }
                     else if(flg->width > ilength)
+                    {
+                        if(neg)
+                            ft_putchar("-",flenght);
                         ft_putblanks(flg->width - ilength, flenght);
+                    }
                 }
                 else if(flg->zero == 1 && ilength < flg->width)
                     ft_putzeros(flg->width - ilength, flenght);
                 else if(ilength < flg->width)
+                {
+                    if(neg)
+                        ft_putchar("-",flenght);
                     ft_putblanks(flg->width - ilength, flenght);
+                }
                 if(flg->width != 0 && flg->precision != 0)
                     ft_putstr(cad, flenght);
             }

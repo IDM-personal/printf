@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/19 20:48:21 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 20:56:54 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
     }
     else if(type == 'u')
     {
-        n = va_arg(args, u_int);
-        ft_resolve_u(ft_itoa(n), flg, flenght);
+        n = va_arg(args, unsigned int);
+        ft_resolve_u(ft_itoau(n), flg, flenght);
     }
     else
         n = va_arg(args, int);

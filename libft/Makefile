@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idm <idm@student.42.fr>                    +#+  +:+       +#+         #
+#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2021/01/13 07:36:20 by idm              ###   ########.fr        #
+#    Updated: 2021/01/19 20:55:21 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC_EXTRA = ft_putstr_n.c		\
 			ft_putblanks.c		\
 			ft_putzeros.c		\
 			ft_putstr.c 		\
-			ft_putchar.c
+			ft_putchar.c		\
+			ft_itoau.c
 CFLAGS = -Wall -Wextra -Werror
 LIBNAME = libft.a
 

@@ -6,7 +6,7 @@
 #    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2021/01/19 19:06:36 by root             ###   ########.fr        #
+#    Updated: 2021/01/19 20:44:33 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_PF =    flaghandler.c\
 			ft_resolve_string.c\
 			ft_resolve_char.c\
 			ft_resolve_pct.c\
-			ft_resolve_i.c
+			ft_resolve_i.c\
+			ft_resolve_u.c
 
 PRINTF =    ft_printf.c
 

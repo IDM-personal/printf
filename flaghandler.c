@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/19 18:43:21 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 18:52:15 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    findprec(char *cad, t_flag *flg)
         //printf("%c\n", *cad);
         if(*cad == '-')
         {
-            findprec(ft_substr(cad, 1,ft_strlen(cad)),flg);
+            flg->precision = -1;
             return ;
         }
         prec[i++] = *cad++;
@@ -114,7 +114,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
         {
             *cadwp++;
             if(*cadwp == '-')
-                findprec(ft_substr(cadwp, 1,ft_strlen(cadwp)),flg);
+                findprec(cadwp,flg);
             if(*cadwp == '*')
             {
                 flg->precision = va_arg(args, int);

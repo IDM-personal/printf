@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/19 20:11:35 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 20:15:38 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
                     ft_putblanks(flg->width - ilength, flenght);
                 if(flg->width != 0 && flg->precision != 0)
                 {
-                    if(neg && flg->precision < ilength && !flg->zero || flg->width <= ilength)
+                    if(neg && flg->precision < ilength && !flg->zero || (neg && flg->width >= ilength))
                         ft_putchar('-',flenght);
                     ft_putstr(cad, flenght);
                 }

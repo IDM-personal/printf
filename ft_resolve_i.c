@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/19 20:02:14 by root             ###   ########.fr       */
+/*   Updated: 2021/01/19 20:07:40 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
             if(flg->precision >= ilength)
             {
                 if(neg)
+                {
                     ft_putchar('-',flenght);
-                ft_putzeros(flg->precision - ilength, flenght);
+                    ft_putzeros(flg->precision - ilength + 1, flenght);
+                }
+                else
+                    ft_putzeros(flg->precision - ilength, flenght);
                 ft_putstr(cad, flenght);
             }
             else
@@ -72,7 +76,7 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
             }
             else
             {
-                //printf("%i <> %i <> %i <> %i <> %i\n", flg->zero, flg->width, flg->precision, ilength, neg);
+                printf("%i <> %i <> %i <> %i <> %i\n", flg->zero, flg->width, flg->precision, ilength, neg);
                 if(flg->zero && flg->width > ilength && flg->precision > ilength)
                 {
                     if(neg)
@@ -103,7 +107,7 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
                     ft_putblanks(flg->width - ilength, flenght);
                 if(flg->width != 0 && flg->precision != 0)
                 {
-                    if(neg && !flg->zero && flg->precision < ilength)
+                    if(neg && flg->precision < ilength)
                         ft_putchar('-',flenght);
                     ft_putstr(cad, flenght);
                 }
@@ -116,5 +120,4 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
             ft_putchar('-',flenght);
         ft_putstr(cad, flenght);
     }
-        
 }

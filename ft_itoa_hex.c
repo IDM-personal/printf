@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:45:14 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 18:00:14 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 18:19:36 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char *ft_itohex_t(unsigned long itohex, int caps)
 {
     char *hextable;
     char *hexval = (char*)(malloc(sizeof(char*)));
-    unsigned int ival;
+    unsigned long ival;
     int i = 0;
 
     ival = itohex;

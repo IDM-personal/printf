@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/20 10:13:50 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 10:15:28 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
             else
             {
                 //printf("%i <> %i <> %i <> %i <> %i\n", flg->zero, flg->width, flg->precision, ilength, neg);
-                if(flg->zero && flg->width > ilength && flg->precision > ilength)
-                    ft_putzeros(flg->width - ilength, flenght);
-                else if(flg->precision != -1)
+                if(flg->precision != -1)
                 {
                     if(flg->precision == 0)
                         ft_putblanks(flg->width - flg->precision, flenght);

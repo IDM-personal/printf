@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:45:14 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/12 03:36:57 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/20 18:00:14 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_rev(char *src)
     return &src[0];
 }
 
-char *ft_itohex_t(int itohex, int caps)
+char *ft_itohex_t(unsigned long itohex, int caps)
 {
     char *hextable;
     char *hexval = (char*)(malloc(sizeof(char*)));

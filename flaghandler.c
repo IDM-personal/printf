@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 18:12:36 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 18:33:57 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
     int i = 0;
     char *width = malloc(sizeof(char*));
     char *precision = malloc(sizeof(char*));
-    flg->width = 0;
+    flg->width = -1;
     flg->precision = 0;
     if(*cadwp)
     {
@@ -101,13 +101,13 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 findwidth(ft_replace(cadwp, '*', ft_itoa(flg->width)), flg);
                 cadwp = ft_substr(cadwp, ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
             }
-            else
+            else if(*cadwp)
             {
                 findwidth(cadwp, flg);
                 cadwp = ft_substr(cadwp,  ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
             }
         }
-        if(flg->width <= 0)
+        if(ft_strlen(width) != 0)
             flg->width = ft_atoi(width);
         i = 0;
         while(*cadwp != 0)
@@ -200,7 +200,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    //cum(flg);
+    cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

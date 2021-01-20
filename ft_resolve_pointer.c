@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/20 17:40:34 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 17:45:09 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
                 }
                 else
                 {
-                    if(flg->precision == 0 || flg->precision < ilength)
+                    if(flg->precision == -1)
                         ft_putblanks(flg->width - ilength, flenght);
+                    else if(flg->precision < ilength)
+                        ft_putblanks(flg->width - ilength + 1, flenght);
                     else
                         ft_putblanks(flg->width - flg->precision - ilength, flenght);
                     ft_putstr("0x", flenght);

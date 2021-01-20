@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolve_pointer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 07:31:46 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/20 17:38:50 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,7 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
         {
             ft_putstr("0x", flenght);
             if(flg->precision > ilength)
-            {
-                *flenght += flg->precision + flg->width;
                 ft_putzeros(flg->precision - ilength + flg->width, flenght);
-            }
-            else
-                *flenght += ilength;
             ft_putstr_n(cad, flg->precision, flenght);
         }
         else
@@ -61,13 +56,11 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
                     else
                         ft_putstr_n(cad, flg->precision, flenght);
                 }
-                *flenght += flg->width;
             }
             else
             {
                 ft_putstr("0x", flenght);
                 ft_putstr_n(cad, flg->precision, flenght);
-                *flenght += ilength;
             }
         }
     }
@@ -76,6 +69,5 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
         ft_putstr("0x", flenght);
         if(flg->width != 0 && flg->precision !=0)
             ft_putstr(cad, flenght);
-        *flenght += ilength;
     }
 }

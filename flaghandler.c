@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 18:45:03 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 18:46:27 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void    findprec(char *cad, t_flag *flg)
         if(*cad == '-')
         {
             flg->precision = -1;
-            flg->width = -1;
+            if(flg->width == 0)
+                flg->width = -1;
             return ;
         }
         prec[i++] = *cad++;

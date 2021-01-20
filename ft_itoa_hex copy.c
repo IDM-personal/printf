@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_hex.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_hex copy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:45:14 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 22:35:30 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 22:35:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ char	*ft_rev(char *src)
     return &src[0];
 }
 
-char *ft_itohex_t(unsigned int itohex, int caps)
+char *ft_itohex_u(unsigned long itohex, int caps)
 {
     char *hextable;
     char *hexval = (char*)(malloc(sizeof(char*)));
-    unsigned int ival;
+    unsigned long ival;
     int i = 0;
 
     ival = itohex;

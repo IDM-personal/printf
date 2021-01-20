@@ -6,7 +6,7 @@
 #    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2021/01/19 20:44:33 by root             ###   ########.fr        #
+#    Updated: 2021/01/20 18:16:37 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,11 +59,13 @@ clean:
 		@$(MAKE) -C $(LIBFT_PATH) fclean
 		@echo Clean objects $(NAME)
 		@rm -rf $(OBJET_PF) $(OBJET_PRINTF)
+		@rm -rf *.o
 
 fclean: clean
 		@$(MAKE) -C $(LIBFT_PATH) fclean
 		@echo Clean $(NAME)
 		@rm -rf $(NAME)
+		@rm -rf *.o *.a
 		@echo ======[Clean]======
 
 g:

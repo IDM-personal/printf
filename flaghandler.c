@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 18:46:27 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 22:30:44 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    //cum(flg);
+    cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

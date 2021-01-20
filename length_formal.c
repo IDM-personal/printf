@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/20 18:25:48 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 22:35:52 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
     else if(type == 'p')
     {
         unsigned long val = va_arg(args, unsigned long);
-        cad = ft_itohex_t(val,0);
+        cad = ft_itohex_u(val,0);
         ft_resolve_pointer(cad, flg, flenght);
     }
     else

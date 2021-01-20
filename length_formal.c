@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/20 17:24:30 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 17:47:36 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
         n = va_arg(args, unsigned int);
         ft_resolve_u(ft_itoau(n), flg, flenght);
     }
+    if(type == 'p')
+    {
+        n = va_arg(args, unsigned int);
+        cad = ft_itohex_t(n,0);
+        ft_resolve_pointer(cad, flg, flenght);
+    }
     else
         n = va_arg(args, int);
     if(type == 'c')
@@ -46,11 +52,6 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
     {
         cad = ft_itohex_t(n,1);
         ft_resolve_hex(cad, flg, flenght);
-    }
-    if(type == 'p')
-    {
-        cad = ft_itohex_t(n,0);
-        ft_resolve_pointer(cad, flg, flenght);
     }
     if(type == 'i')
         ft_resolve_i(n, flg, flenght);

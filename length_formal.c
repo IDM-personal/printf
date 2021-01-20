@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/19 20:56:54 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 17:24:30 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
     }
     if(type == 'i')
         ft_resolve_i(n, flg, flenght);
-    
+    if(type == 'd')
+        ft_resolve_i(n, flg, flenght);
 }

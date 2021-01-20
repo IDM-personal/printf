@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/20 21:59:31 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 22:01:49 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,5 @@ void ft_resolve_pointer(char *cad, t_flag *flg, int *flenght)
     else
         ft_putstr(ft_strjoin("0x",cad), flenght);
 }
+
+

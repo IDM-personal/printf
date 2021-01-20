@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 18:34:47 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 18:45:03 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void    findprec(char *cad, t_flag *flg)
         if(*cad == '-')
         {
             flg->precision = -1;
+            flg->width = -1;
             return ;
         }
         prec[i++] = *cad++;
@@ -81,7 +82,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
     int i = 0;
     char *width = malloc(sizeof(char*));
     char *precision = malloc(sizeof(char*));
-    flg->width = -1;
+    flg->width = 0;
     flg->precision = 0;
     if(*cadwp)
     {
@@ -107,7 +108,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 cadwp = ft_substr(cadwp,  ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
             }
         }
-        if(ft_strlen(width) != 0)
+        if(flg->width <= 0)
             flg->width = ft_atoi(width);
         i = 0;
         while(*cadwp != 0)

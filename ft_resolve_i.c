@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/20 17:16:38 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 17:20:44 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void ft_resolve_i_neg(char *cad, t_flag *flg, int *flenght)
                     if(flg->precision > ilength || flg->precision == 0)
                         ft_putblanks(flg->width - flg->precision - 1, flenght);
                     else if(flg->width > ilength)
-                        ft_putblanks(flg->width - ilength, flenght);
+                        ft_putblanks(flg->width - ilength - 1, flenght);
                 }
                 else if(ilength < flg->width)
-                    ft_putblanks(flg->width - ilength - 1, flenght);
+                    ft_putblanks(flg->width - ilength, flenght);
             }
             else
             {
@@ -61,7 +61,7 @@ void ft_resolve_i_neg(char *cad, t_flag *flg, int *flenght)
                         ft_putblanks(flg->width - flg->precision, flenght);
                     else if(flg->precision > ilength)
                     {
-                        ft_putblanks(flg->width - flg->precision , flenght);
+                        ft_putblanks(flg->width - flg->precision - 1, flenght);
                         ft_putchar('-',flenght);
                         ft_putzeros(flg->precision - ilength + 1, flenght);
                         ft_putstr(cad, flenght);

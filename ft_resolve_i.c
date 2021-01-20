@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/20 10:33:22 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 10:35:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ void ft_resolve_i_neg(char *cad, t_flag *flg, int *flenght)
             if(flg->leftjust)
             {
                 if(flg->precision > ilength)
+                {
+                    ft_putchar('-', flenght);
                     ft_putzeros(flg->precision - ilength, flenght);
-                if(flg->width != 0 && flg->precision != 0)
-                    ft_putstr(cad, flenght);
+                }
+                else if(flg->width != 0 && flg->precision != 0)
+                    ft_putstr(ft_strjoin("-",cad), flenght);
                 if(flg->precision != -1)
                 {
                     if(flg->precision > ilength || flg->precision == 0)

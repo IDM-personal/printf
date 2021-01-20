@@ -15,6 +15,7 @@ NAME = libftprintf.a
 SRC_PF =    flaghandler.c\
 			length_formal.c\
 			ft_itoa_hex.c\
+			ft_itoa_hex_u.c\
 			ft_resolve_hex.c\
 			ft_resolve_pointer.c\
 			ft_resolve_string.c\

@@ -38,5 +38,6 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght);
 void    ft_resolve_pct(char pct, t_flag *flg, int *flenght);
 void    ft_resolve_i(int i, t_flag *flg, int *flenght);
 void    ft_resolve_u(char *cad, t_flag *flg, int *flenght);
+char	*ft_rev(char *src);
 
 #endif

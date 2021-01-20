@@ -202,7 +202,7 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
     //printf("VALOR DE STAT : %i",stat);
     if(stat > 0)
         flagmods(ft_substr(src,1,stat),flg,args);
-    cum(flg);
+    //cum(flg);
     flagmuncher(flg->type,args,flg,len);
     while(*srcfrompercent != '\0')
     {

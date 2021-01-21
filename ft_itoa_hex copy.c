@@ -6,28 +6,11 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:45:14 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/20 22:35:11 by root             ###   ########.fr       */
+/*   Updated: 2021/01/20 22:46:58 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_rev(char *src)
-{
-	int i;
-    int len = ft_strlen(src);
-    char c;
-
-	i = 0;
-	while (i != (len / 2))
-	{
-        c = src[i];
-        src[i] = src[len - i - 1]; 
-        src[len - i - 1] = c;
-		i++;
-	}
-    return &src[0];
-}
 
 char *ft_itohex_u(unsigned long itohex, int caps)
 {

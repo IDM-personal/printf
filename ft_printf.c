@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 18:45:09 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/13 10:09:28 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/21 15:10:19 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int ft_printf(const char *src, ...)
 		src++;
 	}
 	va_end(args);
+	printf("FINAL LENGTH %i",length);
 	if(length == 0)
 		return (0);
 	else

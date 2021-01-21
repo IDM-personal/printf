@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:53:18 by idm               #+#    #+#             */
-/*   Updated: 2021/01/21 15:11:28 by root             ###   ########.fr       */
+/*   Updated: 2021/01/21 15:15:21 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    flagmuncher(char type, va_list args, t_flag *flg, int *flenght)
     }
     else
         n = va_arg(args, int);
-    if(n == 0 && (flg->width != -1 || flg->precision != -1))
+    if(n == 0 && flg->precision <= 0)
         return;
     if(type == 'c')
         ft_resolve_char(n, flg, flenght);

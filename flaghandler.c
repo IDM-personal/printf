@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/21 15:11:10 by root             ###   ########.fr       */
+/*   Updated: 2021/01/21 15:15:29 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 cadwp = ft_substr(cadwp,  ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
             }
         }
-        if(flg->width <= 0  && flg->precision != -1)
+        if(flg->width <= 0  && flg->width != -1)
             flg->width = ft_atoi(width);
         i = 0;
         while(*cadwp != 0)

@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/21 22:26:36 by root             ###   ########.fr       */
+/*   Updated: 2021/01/21 22:38:34 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght)
     {
         if(flg->precision > flg->width)
         {
-            if(flg->precision >= ilength)
+            if(flg->precision >= ilength && flg->width > 0)
             {
                 ft_putzeros(flg->precision - ilength, flenght);
-                ft_putchar(n, flenght);
+                if(flg->width > ilength)
+                    ft_putchar(n, flenght);
             }
             else
                 ft_putchar(n, flenght);
@@ -32,17 +33,12 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght)
         {
             if(flg->leftjust)
             {
-                if(flg->precision > ilength)
-                    ft_putzeros(flg->precision - ilength, flenght);
+                /* if(flg->precision > ilength)
+                    ft_putzeros(flg->precision - ilength, flenght); */
                 if(flg->width != 0 && flg->precision != 0)
                     ft_putchar(n, flenght);
                 if(flg->precision != -1)
-                {
-                    if(flg->precision > ilength || flg->precision == 0)
-                        ft_putblanks(flg->width - flg->precision, flenght);
-                    else if(flg->width > ilength)
-                        ft_putblanks(flg->width - ilength, flenght);
-                }
+                    ft_putblanks(flg->width - ilength, flenght);
                 else if(ilength < flg->width)
                     ft_putblanks(flg->width - ilength, flenght);
             }
@@ -64,7 +60,7 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght)
                 }
                 else if(ilength < flg->width)
                     ft_putblanks(flg->width - ilength, flenght);
-                if(flg->width != 0 && flg->precision >= 0)
+                if(flg->width != 0 || flg->precision != 0)
                     ft_putchar(n, flenght);
             }
         }

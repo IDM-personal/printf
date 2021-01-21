@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolve_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 07:32:53 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/21 22:26:36 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght)
                 }
                 else if(ilength < flg->width)
                     ft_putblanks(flg->width - ilength, flenght);
-                if(flg->width != 0 && flg->precision != 0)
+                if(flg->width != 0 && flg->precision >= 0)
                     ft_putchar(n, flenght);
             }
         }

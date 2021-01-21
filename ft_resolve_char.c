@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 01:49:32 by idm               #+#    #+#             */
-/*   Updated: 2021/01/21 22:38:34 by root             ###   ########.fr       */
+/*   Updated: 2021/01/21 22:44:27 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,7 @@ void    ft_resolve_char(int n, t_flag *flg, int *flenght)
                 {
                     if(flg->precision == 0)
                         ft_putblanks(flg->width - flg->precision, flenght);
-                    else if(flg->precision > ilength)
-                    {
-                        ft_putblanks(flg->width - flg->precision, flenght);
-                        ft_putzeros(flg->precision - ilength, flenght);
-                    }
-                    else if(flg->width > ilength)
+                    else 
                         ft_putblanks(flg->width - ilength, flenght);
                 }
                 else if(ilength < flg->width)

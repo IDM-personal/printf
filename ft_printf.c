@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 18:45:09 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/21 15:10:19 by root             ###   ########.fr       */
+/*   Updated: 2021/01/21 15:28:04 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int ft_printf(const char *src, ...)
 		src++;
 	}
 	va_end(args);
-	printf("FINAL LENGTH %i",length);
 	if(length == 0)
 		return (0);
 	else

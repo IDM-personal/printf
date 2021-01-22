@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:42:47 by root              #+#    #+#             */
-/*   Updated: 2021/01/22 11:32:03 by root             ###   ########.fr       */
+/*   Updated: 2021/01/22 11:36:32 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    ft_resolve_u(char *cad, t_flag *flg, int *flenght)
             {
                 if(flg->precision > ilength)
                     ft_putzeros(flg->precision - ilength, flenght);
-                if(flg->width != 0 && flg->precision != 0)
+                if(flg->width != 0 && flg->precision != 0 || ft_atoi(cad) != 0)
                     ft_putstr(cad, flenght);
                 if(flg->precision != -1)
                 {

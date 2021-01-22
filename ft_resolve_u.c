@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:42:47 by root              #+#    #+#             */
-/*   Updated: 2021/01/22 10:58:41 by root             ###   ########.fr       */
+/*   Updated: 2021/01/22 11:26:35 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void    ft_resolve_u(char *cad, t_flag *flg, int *flenght)
                     if(ilength > flg->precision)
                     {
                         if(flg->width > ilength)
-                        ft_putblanks(flg->width-ilength, flenght);
+                            ft_putblanks(flg->width-ilength, flenght);
                         ft_putstr(cad, flenght);
+                        return ;
                     }
                     else if(flg->precision == 0)
                     {

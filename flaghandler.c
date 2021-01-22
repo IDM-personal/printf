@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/21 15:23:51 by root             ###   ########.fr       */
+/*   Updated: 2021/01/22 12:11:42 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void    findwidth(char *cad, t_flag *flg)
     char *width;
     int i;
 
-    //printf("CADENA : %s",cad);
+    //printf("CADENA WIDTH : %s",cad);
     i = 0;
     width = malloc(sizeof(char*));
     while(*cad)
@@ -70,7 +70,7 @@ void    findwidth(char *cad, t_flag *flg)
         if(*cad == '-')
             {
                 flg->leftjust = 1;
-                findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
+                //findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
                 return ;
             }
         width[i++] = *cad++;
@@ -93,7 +93,7 @@ void    findwp(char *cadwp, t_flag *flg, va_list args)
                 findwp(ft_substr(cadwp, 1,ft_strlen(cadwp)),flg, args);
                 return ;
             }
-            if(ft_strpchr(cadwp, '0') == 0)
+            if(ft_strpchr(cadwp++, '0') == 0)
                 flg->zero = 1;
             if(*cadwp == '*')
             {
@@ -209,5 +209,6 @@ char    *flaghandler(char *srcfrompercent, va_list args, int *len)
 		ft_putchar(*srcfrompercent, len);
         srcfrompercent++;
     }
+    //printf("FINAL LENGTH %i\n", *len);
     return (NULL);
 }

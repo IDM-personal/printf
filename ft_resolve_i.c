@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/22 12:35:26 by root             ###   ########.fr       */
+/*   Updated: 2021/01/22 12:37:33 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,11 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
     if(i < 0)
     {
         i2 = i;
-        if(i < 0)
+        if(i * -1 < 0)
             cad = ft_itoau(i2);
         else
-            cad = ft_itoa(i);
+            cad = ft_itoa(i * -1);
+        //printf("\nVALUE %s\n", cad);
         ft_resolve_i_neg(cad, flg, flenght);
         return ;
     }

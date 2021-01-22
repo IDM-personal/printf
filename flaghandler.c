@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/22 12:13:25 by root             ###   ########.fr       */
+/*   Updated: 2021/01/22 12:15:23 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void    findwidth(char *cad, t_flag *flg)
         if(*cad == '-')
             {
                 flg->leftjust = 1;
-                //findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
+                findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
                 return ;
             }
         width[i++] = *cad++;

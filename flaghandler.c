@@ -6,213 +6,93 @@
 /*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 18:20:46 by idelgado          #+#    #+#             */
-/*   Updated: 2021/01/30 12:59:08 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/30 18:09:40 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char* flagValues = "cspdiuxX%";
-
-char    *ft_replace(char *cad, char toreplace, char *replacer)
+t_flag	*initstruct(void)
 {
-    char    *newcad;
+	t_flag	*flag;
 
-    newcad = malloc(ft_strlen(cad) + ft_strlen(replacer));
-    if(cad)
-        while(*cad)
-        {
-            if(*cad == toreplace)
-            {
-                newcad = ft_substr(cad, 0, ft_strpchr(cad, '*'));
-                newcad = ft_strjoin(newcad, replacer);
-                return(newcad);
-            }
-            *cad++;
-        }
-    
-}
-
-void    findprec(char *cad, t_flag *flg)
-{
-    char *prec;
-    int i;
-
-    //printf("CADENA PREC : %s",cad);
-    i = 0;
-    prec = malloc(sizeof(char*));
-    while(*cad)
-    {
-        //printf("%c\n", *cad);
-        if(*cad == '-')
-        {
-            flg->precision = -1;
-            if(flg->width == 0)
-                flg->width = -1;
-            return ;
-        }
-        prec[i++] = *cad++;
-    }
-    flg->precision = ft_atoi(prec);
-}
-
-void    findwidth(char *cad, t_flag *flg)
-{
-    char *width;
-    int i;
-
-    //printf("CADENA WIDTH : %s",cad);
-    i = 0;
-    width = malloc(sizeof(char*));
-    while(*cad)
-    {
-        //printf("%c\n", *cad);
-        if(*cad == '-')
-            {
-                flg->leftjust = 1;
-                findwidth(ft_substr(cad, 1,ft_strlen(cad)),flg);
-                return ;
-            }
-        width[i++] = *cad++;
-    }
-    flg->width = ft_atoi(width);
-}
-
-void    findwp(char *cadwp, t_flag *flg, va_list args)
-{
-    int i = 0;
-    char *width = malloc(sizeof(char*));
-    char *precision = malloc(sizeof(char*));
-    if(*cadwp)
-    {
-        while(*cadwp != '.')
-        {
-            
-            if(ft_strpchr(cadwp, '0') == 0)
-            {
-                flg->zero = 1;
-                cadwp++;
-            }
-            if(*cadwp == '-')
-            {
-                flg->leftjust = 1;
-                findwp(ft_substr(cadwp, 1,ft_strlen(cadwp)),flg, args);
-                return ;
-            }
-            if(*cadwp == '*')
-            {
-                flg->width = va_arg(args, int);
-                findwidth(ft_replace(cadwp, '*', ft_itoa(flg->width)), flg);
-                cadwp = ft_substr(cadwp, ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
-            }
-            else if(*cadwp)
-            {
-                findwidth(cadwp, flg);
-                cadwp = ft_substr(cadwp,  ft_strpchr(cadwp, '.'), ft_strlen(cadwp));
-            }
-        }
-        if(flg->width == 0)
-            flg->width = ft_atoi(width);
-        i = 0;
-        while(*cadwp != 0)
-        {
-            *cadwp++;
-            if(*cadwp == '-')
-                findprec(cadwp,flg);
-            if(*cadwp == '*')
-            {
-                flg->precision = va_arg(args, int);
-                findprec(ft_replace(cadwp, '*', ft_itoa(flg->precision)), flg);
-                return ;
-            }
-            findprec(cadwp, flg);
-            return ;
-        }
-        if(flg->precision == 0)
-            flg->precision = ft_atoi(precision);
-    }
-}
-
-void    flagmods(char *modscad, t_flag *flg, va_list args)
-{
-    if(ft_strrchr(modscad,'.'))
-    {
-        findwp(modscad, flg, args);
-        return ;
-    }
-    else
-        while(*modscad)
-        {
-            //printf("CAD MODS : %s",modscad);
-            if(*modscad == '-')
-            {
-                flg->leftjust = 1;
-                flagmods(ft_substr(modscad, 1,ft_strlen(modscad)),flg,args);
-                return ;
-            }
-            if(*modscad == '*')
-            {
-                flg->width = va_arg(args, int);
-                findwidth(ft_replace(modscad, '*', ft_itoa(flg->width)), flg);
-                return ;
-            }
-            if(ft_strpchr(modscad, '0') == 0)
-                flg->zero = 1;
-            else 
-            {
-                findwidth(modscad, flg);
-                return ;
-            }
-            *modscad++;
-        }
-}
-
-void cum(t_flag *flg)
-{
-    printf("\nTIPO : %c\n", flg->type);
-    printf("\nZERO : %d\n", flg->zero);
-    printf("\nLEFT JUST: %d\n", flg->leftjust);
-    printf("\nWIDTH : %d\n", flg->width);
-    printf("\nPRECISION : %d\n", flg->precision);
-}
-
-void initstruct(t_flag *flag){
+	flag = (t_flag*)(malloc(sizeof(t_flag)));
 	flag->type = 0;
 	flag->zero = 0;
 	flag->leftjust = 0;
 	flag->width = -1;
 	flag->precision = -1;
+	return (flag);
 }
 
-char    *flaghandler(char *srcfrompercent, va_list args, int *len)
+char	*ft_replace(char *cad, char toreplace, char *replacer)
 {
-    char* flagValues;
-    flagValues = "cspdiuxX%";
-	t_flag *flg = (t_flag*)(malloc(sizeof(t_flag)));
-    initstruct(flg);
-    int stat = 0;
-    char *src = ft_strdup(srcfrompercent);
-    while(*srcfrompercent++ != 0)
-    {
-        if(ft_strrchr(flagValues,*srcfrompercent) != 0)
-        {
-            flg->type = *srcfrompercent++;
-            break;
-        }else
-            stat++;
-    }
-    //printf("VALOR DE STAT : %i",stat);
-    if(stat > 0)
-        flagmods(ft_substr(src,1,stat),flg,args);
-    //cum(flg);
-    flagmuncher(flg->type,args,flg,len);
-    while(*srcfrompercent != '\0')
-    {
-        if(*srcfrompercent == '%')
-            return(srcfrompercent);
-		ft_putchar(*srcfrompercent, len);
-        srcfrompercent++;
-    }
-    //printf("FINAL LENGTH %i\n", *len);
-    return (NULL);
+	char	*newcad;
+
+	newcad = malloc(ft_strlen(cad) + ft_strlen(replacer));
+	if (cad)
+		while (*cad)
+		{
+			if (*cad == toreplace)
+			{
+				newcad = ft_substr(cad, 0, ft_strpchr(cad, '*'));
+				newcad = ft_strjoin(newcad, replacer);
+				return (newcad);
+			}
+			*cad++;
+		}
+}
+
+void	flm(char *mods, t_flag *flg, va_list args)
+{
+	if (ft_strrchr(mods, '.'))
+		findwp(mods, flg, args);
+	else
+		while (*mods)
+		{
+			if (*mods == '-')
+			{
+				flg->leftjust = 1;
+				return (flm(ft_substr(mods, 1, ft_strlen(mods)), flg, args));
+			}
+			if (*mods == '*')
+			{
+				flg->width = va_arg(args, int);
+				return (fw(ft_replace(mods, '*', ft_itoa(flg->width)), flg));
+			}
+			if (ft_strpchr(mods, '0') == 0)
+				flg->zero = 1;
+			else
+				return (fw(mods, flg));
+			mods++;
+		}
+}
+
+char	*flaghandler(char *srcfrompercent, va_list args, int *len)
+{
+	t_flag	*flg;
+	char	*src;
+	int		stat;
+
+	flg = initstruct();
+	stat = 0;
+	src = ft_strdup(srcfrompercent);
+	while (*srcfrompercent++ != 0)
+		if (ft_strrchr("cspdiuxX%", *srcfrompercent) != 0)
+		{
+			flg->type = *srcfrompercent++;
+			break ;
+		}
+		else
+			stat++;
+	if (stat > 0)
+		flm(ft_substr(src, 1, stat), flg, args);
+	flagmuncher(args, flg, len);
+	while (*srcfrompercent != '\0')
+	{
+		if (*srcfrompercent == '%')
+			return (srcfrompercent);
+		ft_putchar(*srcfrompercent++, len);
+	}
+	return (NULL);
 }

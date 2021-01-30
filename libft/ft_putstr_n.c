@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_n.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idm <idm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:32:44 by idm               #+#    #+#             */
-/*   Updated: 2021/01/13 07:23:22 by idm              ###   ########.fr       */
+/*   Updated: 2021/01/30 20:07:17 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putstr_n(char *s, int max, int *len)
 
 	c = 0;
 	if (s)
-		while (*s && c !=max)
+		while (*s && c != max)
 		{
 			write(1, &(*s++), 1);
 			c++;

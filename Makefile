@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
+#    By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 13:05:45 by idelgado          #+#    #+#              #
-#    Updated: 2021/01/20 18:16:37 by root             ###   ########.fr        #
+#    Updated: 2021/01/30 20:15:41 by idelgado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = libftprintf.a
 
 SRC_PF =    flaghandler.c\
 			length_formal.c\
+			ft_findprecs.c\
 			ft_itoa_hex.c\
 			ft_itoa_hex_u.c\
 			ft_resolve_hex.c\
@@ -22,7 +23,8 @@ SRC_PF =    flaghandler.c\
 			ft_resolve_char.c\
 			ft_resolve_pct.c\
 			ft_resolve_i.c\
-			ft_resolve_u.c
+			ft_resolve_u.c\
+			ft_resolve_i_neg.c
 
 PRINTF =    ft_printf.c
 

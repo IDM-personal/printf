@@ -6,7 +6,7 @@
 /*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/30 20:12:22 by idelgado         ###   ########.fr       */
+/*   Updated: 2021/01/30 20:30:07 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,3 @@ void	ft_resolve_i(int i, t_flag *flg, int *flenght)
 	else
 		ft_putstr(cad, flenght);
 }
-
-

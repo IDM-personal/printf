@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolve_i.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: idelgado <idelgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:03:55 by root              #+#    #+#             */
-/*   Updated: 2021/01/22 12:37:33 by root             ###   ########.fr       */
+/*   Updated: 2021/01/30 12:28:29 by idelgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
             cad = ft_itoau(i2);
         else
             cad = ft_itoa(i * -1);
-        //printf("\nVALUE %s\n", cad);
         ft_resolve_i_neg(cad, flg, flenght);
         return ;
     }
@@ -136,7 +135,9 @@ void ft_resolve_i(int i, t_flag *flg, int *flenght)
                     ft_putstr(cad, flenght);
                 if(flg->precision != -1)
                 {
-                    if(flg->precision > ilength || flg->precision == 0)
+					if (ft_atoi(cad) == 0)
+						ft_putblanks(flg->width - flg->precision, flenght);
+                    else if(flg->precision > ilength)
                         ft_putblanks(flg->width - flg->precision, flenght);
                     else if(flg->width > ilength)
                         ft_putblanks(flg->width - ilength, flenght);
